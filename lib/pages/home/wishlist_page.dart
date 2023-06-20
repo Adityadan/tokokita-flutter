@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamo/theme.dart';
 
 class wishlistPage extends StatelessWidget {
   const wishlistPage({super.key});
@@ -6,7 +7,7 @@ class wishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text('Wishlist Page')),
+      child: Center(child: Text('Wishlist Page',style: primaryTextStyle,)),
     );
   }
 }

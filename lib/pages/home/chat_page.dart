@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamo/theme.dart';
 
 class chatPage extends StatelessWidget {
   const chatPage({super.key});
@@ -6,7 +7,7 @@ class chatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text('chat Page')),
+      child: Center(child: Text('chat Page',style: primaryTextStyle,)),
     );
   }
 }
