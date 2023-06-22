@@ -11,7 +11,7 @@ class SignInPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Login',
+              'LOGIN',
               style: primaryTextStyle.copyWith(
                 fontSize: 24,
                 fontWeight: semiBold,
@@ -23,15 +23,26 @@ class SignInPage extends StatelessWidget {
             Text(
               'Sign In to Countinue',
               style: subtitleTextStyle,
-            )
+            ),
           ],
+        ),
+      );
+    }
+
+    Widget SignInLogo() {
+      return Container(
+        margin: EdgeInsets.only(top: 30),
+        child: Image.asset(
+          'assets/stall.gif',
+          width: 200,
+          // width: 50,
         ),
       );
     }
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 70),
+        margin: EdgeInsets.only(top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -116,17 +127,18 @@ class SignInPage extends StatelessWidget {
                       width: 16,
                     ),
                     Expanded(
-                        child: TextFormField(
-                      style: primaryTextStyle,
-                      obscureText: true,
-                      decoration: InputDecoration.collapsed(
-                          hintText: 'Your password',
-                          hintStyle: subtitleTextStyle),
-                    ))
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        obscureText: true,
+                        decoration: InputDecoration.collapsed(
+                            hintText: 'Your password',
+                            hintStyle: subtitleTextStyle),
+                      ),
+                    )
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
@@ -195,6 +207,10 @@ class SignInPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               header(),
+              Align(
+                alignment: Alignment.center,
+                child: SignInLogo(),
+              ),
               emailInput(),
               passwordInput(),
               signInButton(),

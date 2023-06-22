@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shamo/theme.dart';
+import 'package:shamo/widgets/product_card.dart';
+import 'package:shamo/widgets/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -19,13 +20,15 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Halo, Alex',style: primaryTextStyle.copyWith(
-                    fontSize: 24,
-                    fontWeight: semiBold,
-                  )),
-                  Text('@alexkeinn',style: subtitleTextStyle.copyWith(
-                    fontSize: 16,
-                  ))
+                  Text('Halo, Alex',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 24,
+                        fontWeight: semiBold,
+                      )),
+                  Text('@alexkeinn',
+                      style: subtitleTextStyle.copyWith(
+                        fontSize: 16,
+                      ))
                 ],
               ),
             ),
@@ -33,17 +36,16 @@ class HomePage extends StatelessWidget {
               width: 54,
               height: 54,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(image: AssetImage('assets/image_profile.png'))
-              ),
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage('assets/image_profile.png'))),
             )
           ],
         ),
       );
     }
 
-    Widget categories()
-    {
+    Widget categories() {
       return Container(
         margin: EdgeInsets.only(
           top: defaultMargin,
@@ -52,7 +54,9 @@ class HomePage extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              SizedBox(width: defaultMargin,),
+              SizedBox(
+                width: defaultMargin,
+              ),
               Container(
                 margin: EdgeInsets.only(right: 16),
                 padding: EdgeInsets.symmetric(
@@ -64,7 +68,8 @@ class HomePage extends StatelessWidget {
                   color: primaryColor,
                 ),
                 child: Text(
-                  'All Shoes',style: primaryTextStyle.copyWith(
+                  'All Shoes',
+                  style: primaryTextStyle.copyWith(
                     fontSize: 13,
                     fontWeight: medium,
                   ),
@@ -84,7 +89,8 @@ class HomePage extends StatelessWidget {
                   color: transparentColor,
                 ),
                 child: Text(
-                  'Running',style: subtitleTextStyle.copyWith(
+                  'Running',
+                  style: subtitleTextStyle.copyWith(
                     fontSize: 13,
                     fontWeight: medium,
                   ),
@@ -104,7 +110,8 @@ class HomePage extends StatelessWidget {
                   color: transparentColor,
                 ),
                 child: Text(
-                  'Training',style: subtitleTextStyle.copyWith(
+                  'Training',
+                  style: subtitleTextStyle.copyWith(
                     fontSize: 13,
                     fontWeight: medium,
                   ),
@@ -124,7 +131,8 @@ class HomePage extends StatelessWidget {
                   color: transparentColor,
                 ),
                 child: Text(
-                  'BasketBall',style: subtitleTextStyle.copyWith(
+                  'BasketBall',
+                  style: subtitleTextStyle.copyWith(
                     fontSize: 13,
                     fontWeight: medium,
                   ),
@@ -144,7 +152,8 @@ class HomePage extends StatelessWidget {
                   color: transparentColor,
                 ),
                 child: Text(
-                  'Hiking',style: subtitleTextStyle.copyWith(
+                  'Hiking',
+                  style: subtitleTextStyle.copyWith(
                     fontSize: 13,
                     fontWeight: medium,
                   ),
@@ -155,10 +164,87 @@ class HomePage extends StatelessWidget {
         ),
       );
     }
+
+    Widget popularProductsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Text(
+          'Popular Products',
+          style: primaryTextStyle.copyWith(
+            fontSize: 22,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    Widget popularProducts() {
+      return Container(
+        margin: EdgeInsets.only(top: 14),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SizedBox(
+                width: defaultMargin,
+              ),
+              Row(
+                children: [
+                  ProductCard(),
+                  ProductCard(),
+                  ProductCard(),
+                ],
+              )
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget newArrivalsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Text(
+          'New Arrivals',
+          style: primaryTextStyle.copyWith(
+            fontSize: 22,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    Widget newArrivals() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 14,
+        ),
+        child: Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
+      );
+    }
+
     return ListView(
       children: [
         header(),
         categories(),
+        popularProductsTitle(),
+        popularProducts(),
+        newArrivalsTitle(),
+        newArrivals(),
       ],
     );
   }
