@@ -1,4 +1,4 @@
-# shamo
+# TOKOKITA
 
 A new Flutter project.
 
