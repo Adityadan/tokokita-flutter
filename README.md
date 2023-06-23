@@ -1,6 +1,6 @@
 # TOKOKITA
 
-A new Flutter project.
+Project latihan Hybrid Mobile Apps bertemakan marketplace sepatu.
 
 ## Getting Started
 
