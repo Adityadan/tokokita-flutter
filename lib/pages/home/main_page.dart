@@ -39,7 +39,7 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: backgroundColor4,
             currentIndex: currentIndex,
             onTap: ((value) {
-              // print(value);
+              print(value);
               setState(() {
                 currentIndex = value;
               });
@@ -48,7 +48,10 @@ class _MainPageState extends State<MainPage> {
             items: [
               BottomNavigationBarItem(
                   icon: Container(
-                    margin: EdgeInsets.only(top: 20, bottom: 10),
+                    margin: EdgeInsets.only(
+                      top: 20,
+                      bottom: 10,
+                    ),
                     child: Image.asset(
                       'assets/icon_home.png',
                       width: 21,
