@@ -244,9 +244,11 @@ class SignUpPage extends StatelessWidget {
             Navigator.pushNamed(context, '/home');
           }),
           style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12))),
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
           child: Text(
             'Sign Up',
             style: primaryTextStyle.copyWith(

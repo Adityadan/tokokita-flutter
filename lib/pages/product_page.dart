@@ -29,14 +29,97 @@ class _ProductPageState extends State<ProductPage> {
   ];
 
   int currentIndex = 0;
+  bool isWhishlist = false;
 
   @override
   Widget build(BuildContext context) {
+    showSuccessDialog() async {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) => Container(
+          width: MediaQuery.of(context).size.width - (2 * defaultMargin),
+          child: AlertDialog(
+            backgroundColor: backgroundColor3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: primaryTextColor,
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/icon_success.png',
+                    width: 100,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Hurray :)',
+                    style: primaryTextStyle.copyWith(
+                        fontSize: 18, fontWeight: semiBold),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Item added successfully',
+                    style: secondaryTextStyle.copyWith(
+                        fontSize: 14, fontWeight: regular),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: 154,
+                    height: 44,
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 24,
+                        ),
+                      ),
+                      child: Text(
+                        'View My Cart',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     Widget indicator(int index) {
       return Container(
         width: currentIndex == index ? 16 : 4,
         height: 4,
-        margin: EdgeInsets.symmetric(horizontal: 2),
+        margin: EdgeInsets.symmetric(
+          horizontal: 2,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: currentIndex == index ? primaryColor : Color(0xffC4C4C4),
@@ -52,10 +135,11 @@ class _ProductPageState extends State<ProductPage> {
           right: 16,
         ),
         decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(imageUrl),
-            ),
-            borderRadius: BorderRadius.circular(6)),
+          image: DecorationImage(
+            image: AssetImage(imageUrl),
+          ),
+          borderRadius: BorderRadius.circular(6),
+        ),
       );
     }
 
@@ -103,7 +187,9 @@ class _ProductPageState extends State<ProductPage> {
               onPageChanged: ((index, reason) {
                 setState(() {
                   currentIndex = index;
-                  print(['currentIndex of CarouselSlider : ', currentIndex]);
+                  print(
+                    ['currentIndex of CarouselSlider : ', currentIndex],
+                  );
                 });
               }),
             ),
@@ -166,9 +252,51 @@ class _ProductPageState extends State<ProductPage> {
                       ],
                     ),
                   ),
-                  Image.asset(
-                    'assets/button_wishlist.png',
-                    width: 46,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isWhishlist = !isWhishlist;
+                      });
+                      if (isWhishlist) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Has been added to the Wishlist',
+                              textAlign: TextAlign.center,
+                            ),
+                            backgroundColor: secondaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                                topRight: Radius.circular(12),
+                              ),
+                            ),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Has been removed from the Wishlist',
+                              textAlign: TextAlign.center,
+                            ),
+                            backgroundColor: alertColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                                topRight: Radius.circular(12),
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Image.asset(
+                      isWhishlist
+                          ? 'assets/button_wishlist_blue.png'
+                          : 'assets/button_wishlist.png',
+                      width: 46,
+                    ),
                   )
                 ],
               ),
@@ -281,10 +409,15 @@ class _ProductPageState extends State<ProductPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: Image.asset(
-                      'assets/button_chat.png',
-                      width: 54,
-                      height: 54,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/detail-chat');
+                      },
+                      child: Image.asset(
+                        'assets/button_chat.png',
+                        width: 54,
+                        height: 54,
+                      ),
                     ),
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -301,7 +434,9 @@ class _ProductPageState extends State<ProductPage> {
                     child: Container(
                       height: 54,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showSuccessDialog();
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: primaryColor,
                           shape: RoundedRectangleBorder(

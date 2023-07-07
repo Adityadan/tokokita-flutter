@@ -1,11 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:shamo/theme.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 class profilePage extends StatelessWidget {
   // const profilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Future<bool> showExitPopup() async {
+    //   return await showDialog(
+    //         //show confirm dialogue
+    //         //the return value will be from "Yes" or "No" options
+    //         context: context,
+    //         builder: (context) => AlertDialog(
+    //           title: Text('Exit App'),
+    //           content: Text('Do you want to exit an App?'),
+    //           actions: [
+    //             ElevatedButton(
+    //               onPressed: () => Navigator.of(context).pop(false),
+    //               //return false when click on "NO"
+    //               child: Text('No'),
+    //             ),
+    //             ElevatedButton(
+    //               onPressed: () => Navigator.pushNamedAndRemoveUntil(
+    //                   context, '/sign-in', (route) => false),
+    //               //return true when click on "Yes"
+    //               child: Text('Yes'),
+    //             ),
+    //           ],
+    //         ),
+    //       ) ??
+    //       false; //if showDialouge had returned null, then return false
+    // }
+
+    Future showExitPopup() {
+      return AwesomeDialog(
+        context: context,
+        dialogBackgroundColor: backgroundColor1,
+        dialogType: DialogType.warning,
+        headerAnimationLoop: false,
+        animType: AnimType.bottomSlide,
+        title: 'Apakah Anda Yakin ?',
+        titleTextStyle: primaryTextStyle,
+        desc: 'Akun anda akan keluar dari aplikasi',
+        descTextStyle: primaryTextStyle,
+        buttonsTextStyle: const TextStyle(color: Colors.black),
+        showCloseIcon: true,
+        btnCancelOnPress: () {},
+        btnOkOnPress: () {
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/sign-in', (route) => false);
+        },
+      ).show();
+    }
+
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -47,11 +95,16 @@ class profilePage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, '/sign-in', (route) => false);
-                    },
-                    child: Image.asset('assets/button_exit.png', width: 20)),
+                  onTap: () {
+                    // Navigator.pushNamedAndRemoveUntil(
+                    //     context, '/sign-in', (route) => false);
+                    showExitPopup();
+                  },
+                  child: Image.asset(
+                    'assets/button_exit.png',
+                    width: 20,
+                  ),
+                ),
               ],
             ),
           ),
@@ -66,7 +119,9 @@ class profilePage extends StatelessWidget {
           Navigator.pushNamed(context, url);
         },
         child: Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: EdgeInsets.only(
+            top: 20,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -103,7 +158,9 @@ class profilePage extends StatelessWidget {
               //   height: 20,
               // ),
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(
+                  top: 30,
+                ),
                 child: Text(
                   'Account',
                   style: primaryTextStyle.copyWith(
@@ -116,7 +173,9 @@ class profilePage extends StatelessWidget {
               menuItem('Your Orders', ''),
               menuItem('Help', ''),
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(
+                  top: 30,
+                ),
                 child: Text(
                   'General',
                   style: primaryTextStyle.copyWith(
@@ -135,7 +194,10 @@ class profilePage extends StatelessWidget {
     }
 
     return Column(
-      children: [header(), content()],
+      children: [
+        header(),
+        content(),
+      ],
     );
   }
 }

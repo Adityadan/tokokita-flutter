@@ -48,11 +48,13 @@ class DetailChatPage extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  Text('Online',
-                      style: secondaryTextStyle.copyWith(
-                        fontWeight: light,
-                        fontSize: 14,
-                      ))
+                  Text(
+                    'Online',
+                    style: secondaryTextStyle.copyWith(
+                      fontWeight: light,
+                      fontSize: 14,
+                    ),
+                  ),
                 ],
               )
             ],

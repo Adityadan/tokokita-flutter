@@ -20,11 +20,16 @@ class EditProfilePage extends StatelessWidget {
         ),
         title: Text(
           'Edit Profile',
-          style: primaryTextStyle.copyWith(fontWeight: medium, fontSize: 16),
+          style: primaryTextStyle.copyWith(
+            fontWeight: medium,
+            fontSize: 16,
+          ),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.check,
               color: primaryColor,
@@ -43,7 +48,9 @@ class EditProfilePage extends StatelessWidget {
             Text(
               'Name',
               style: secondaryTextStyle.copyWith(
-                  fontWeight: regular, fontSize: 13),
+                fontWeight: regular,
+                fontSize: 13,
+              ),
             ),
             TextFormField(
               style: primaryTextStyle,
@@ -51,7 +58,10 @@ class EditProfilePage extends StatelessWidget {
                 hintText: 'Alex keinnzal',
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: subtitleColor)),
+                  borderSide: BorderSide(
+                    color: subtitleColor,
+                  ),
+                ),
               ),
             )
           ],
@@ -68,7 +78,9 @@ class EditProfilePage extends StatelessWidget {
             Text(
               'Username',
               style: secondaryTextStyle.copyWith(
-                  fontWeight: regular, fontSize: 13),
+                fontWeight: regular,
+                fontSize: 13,
+              ),
             ),
             TextFormField(
               style: primaryTextStyle,
@@ -76,7 +88,10 @@ class EditProfilePage extends StatelessWidget {
                 hintText: '@alexkeinn',
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: subtitleColor)),
+                  borderSide: BorderSide(
+                    color: subtitleColor,
+                  ),
+                ),
               ),
             )
           ],
@@ -93,7 +108,9 @@ class EditProfilePage extends StatelessWidget {
             Text(
               'Email Address',
               style: secondaryTextStyle.copyWith(
-                  fontWeight: regular, fontSize: 13),
+                fontWeight: regular,
+                fontSize: 13,
+              ),
             ),
             TextFormField(
               style: primaryTextStyle,
@@ -101,7 +118,10 @@ class EditProfilePage extends StatelessWidget {
                 hintText: 'alex.kein@gmail.com',
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: subtitleColor)),
+                  borderSide: BorderSide(
+                    color: subtitleColor,
+                  ),
+                ),
               ),
             )
           ],
