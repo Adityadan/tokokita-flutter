@@ -73,7 +73,7 @@ class CheckoutSuccsess extends StatelessWidget {
               margin: EdgeInsets.only(top: 12),
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/cart');
+                  Navigator.pushNamed(context, '/order');
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Color(0xff39374B),

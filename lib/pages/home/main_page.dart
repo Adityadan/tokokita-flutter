@@ -3,6 +3,7 @@ import 'package:shamo/pages/home/chat_page.dart';
 import 'package:shamo/pages/home/home_page.dart';
 import 'package:shamo/pages/home/profile_page.dart';
 import 'package:shamo/pages/home/wishlist_page.dart';
+import 'package:shamo/pages/order_page.dart';
 import 'package:shamo/theme.dart';
 
 class MainPage extends StatefulWidget {
@@ -32,7 +33,9 @@ class _MainPageState extends State<MainPage> {
 
     Widget customButtonNav() {
       return ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(30),
+        ),
         child: BottomAppBar(
           shape: CircularNotchedRectangle(),
           notchMargin: 12,
@@ -93,6 +96,11 @@ class _MainPageState extends State<MainPage> {
                       color:
                           currentIndex == 3 ? primaryColor : Color(0xff808191),
                     ),
+                    /* Icon(
+                      Icons.library_books_outlined,
+                      color:
+                          currentIndex == 3 ? primaryColor : Color(0xff808191),
+                    ), */
                   ),
                   label: ''),
             ],
@@ -111,6 +119,7 @@ class _MainPageState extends State<MainPage> {
           return wishlistPage();
         case 3:
           return profilePage();
+        // return OrderPage();
         default:
           return HomePage();
       }
